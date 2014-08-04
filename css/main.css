@@ -150,6 +150,7 @@ dt{
 	position: absolute;
    	top: 0; bottom: 0; left: 0; right: 0;
 }
+map:not(.active),
 .map.main img:not(.active){
 	display: none;
 }
@@ -157,35 +158,6 @@ dt{
 	width: 50%;
 	float: left;
 }
-/*
-#zoom{
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	z-index: 2;
-	background: #222;
-	border-radius:2px;
-	margin-bottom:1.3rem;
-	margin-right: .4rem;
-}
-#zoom button{
-	display: block;
-	width: 1.5rem;
-	font-weight: bold;
-	font-size: 1.2rem;
-	background: none;
-	border:0;
-	color:#aaa;
-	padding: .1rem;
-	cursor: pointer;
-}
-#zoom button:hover{
-	color:#eee;
-}
-#zoom button:focus{
-	outline: 0;
-}
-*/
 #picker button{
 	border-bottom: 0;
 }
@@ -223,7 +195,8 @@ button.inactive{
 }
 .marker{
 	border-radius: 50%;
-	background:#006577 url(../img/mouseover.png);
+	background:#006577 url(/acronamy/sites/all/modules/building_map/img/mouseover.png);
+	background-repeat: no-repeat!important;
 	background-size: 100%;
 	z-index:2;
 }
@@ -250,34 +223,34 @@ button.inactive{
 	background-color: #22c47f;
 }
 .stairwell .marker{
-	background:#cca729 url(../img/stair.png);
+	background:#cca729 url(/acronamy/sites/all/modules/building_map/img/stair.png);
 	background-size: 100%;
 }
 .male .marker{
-	background:#1f63bf url(../img/male.png);
+	background:#1f63bf url(/acronamy/sites/all/modules/building_map/img/male.png);
 	background-size: 100%;
 }
 .female .marker{
-	background:#bf1f88 url(../img/female.png);
+	background:#bf1f88 url(/acronamy/sites/all/modules/building_map/img/female.png);
 	background-size: 100%;
 	background-position: 4px 2px;
 }
 .unisex .marker{
 }
 .kitchen .marker{
-	background:#454e42 url(../img/kitchen.png);
+	background:#454e42 url(/acronamy/sites/all/modules/building_map/img/kitchen.png);
 	background-size: 95%;
 	background-position: 3px 8px;
 	background-repeat: no-repeat;
 }
 .political .marker{
-	background:#5dacf0 url(../img/political.png);
+	background:#5dacf0 url(/acronamy/sites/all/modules/building_map/img/political.png);
 	background-size: 95%;
 	background-position: 4px 8px;
 	background-repeat: no-repeat;
 }
 .cerimonial .marker{
-	background:#ed3838 url(../img/cerimonial.png);
+	background:#ed3838 url(/acronamy/sites/all/modules/building_map/img/cerimonial.png);
 	background-position: 2px 2px;
 	background-repeat: no-repeat;
 }
@@ -286,6 +259,10 @@ button.inactive{
 }
 .key{
 	width: 100%;
+}
+.marker.open{
+	background-position: right!important;
+	background-size: 50%!important;
 }
 .key th{
 	text-align: left;
@@ -303,12 +280,12 @@ button.inactive{
 	cursor: pointer;
 }
 .key input[type="checkbox"]:checked:after{
-	background:#fff url(../img/eye.png);
+	background:#fff url(/acronamy/sites/all/modules/building_map/img/eye.png);
 	background-size: 100%;
 }
 .key input[type="checkbox"]:after{
 	content: "";
-	background:#fff url(../img/cancel.png);
+	background:#fff url(/acronamy/sites/all/modules/building_map/img/cancel.png);
 	background-size: 100%;
 	display: block;
 	height: 1.4rem;
@@ -328,5 +305,33 @@ area{
 }
 .map.wrapper.contact #room-name,
 .map.wrapper:not(.contact) #building-meta{
+	display: none;
+}
+
+
+/*DRUPAL SORT OF THINGS*/
+body.node-type-map{
+	background:#eee; 
+}
+body.node-type-map .field-number-of-floors,
+body.node-type-map .field-floor-plan-one,
+body.node-type-map .field-floor-plan-two,
+body.node-type-map .field-floor-plan-three,
+body.node-type-map .field-floor-plan-four,
+body.node-type-map .tabs,
+body.node-type-map .title{
+	display: none;
+}
+body.node-type-map.page-node-edit .tabs,
+body.node-type-map.page-node-add .tabs{
+	display: initial;
+}
+body.node-type-map #page{
+	width: 100%;
+	margin: initial;
+}
+
+/*temp*/
+body.node-type-map header{
 	display: none;
 }
