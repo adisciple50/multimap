@@ -1,0 +1,65 @@
+ul.neo{
+	display: inline-block;
+	outline:solid .01em #6f6f6f;
+	padding: 0em;
+	min-width: 5em;
+}
+ul.neo li{
+	list-style: none;
+	padding: .0em .5em;
+	cursor: default;
+	position: relative;
+}
+ul.neo.closed:hover{
+	outline:solid .01em #46aeef;
+	
+}
+ul.neo.open li.active{
+	display: none;
+}
+ul.neo.open{
+	outline:solid .1em;
+}
+ul.neo li:hover{
+	background:#d8d8d8; /*ACENT COLOR*/
+	color:#000;
+}
+ul.neo li.active{
+	background:#458dff;
+	color:#fff;
+}
+ul.neo li.default:hover{
+	background:none;
+	color:#000;
+}
+ul.neo.closed li.default:hover{
+	background: none;
+	color: #000;
+}
+ul.neo li:not(.default){
+	display: none;
+}
+ul.neo li:not(.default){
+	float: left;
+	clear: both;
+	width: calc(100% - 1em); /*UPDATE THIS CALC FROM LI PADDING, just double the value :)*/
+}
+ul.neo.closed li.default:after{ /*Arrow is down because its closed*/
+	content:"^";
+	float:right;
+	display: block;
+	font-weight: bold;
+	line-height: 0.7em;
+	margin-right: -.3em;
+	-webkit-transform:scale(1.8,1.3) rotate(180deg); /* Safari and Chrome */
+    -moz-transform:scale(1.8,1.3) rotate(180deg); /* Firefox */
+    -ms-transform:scale(1.8,1.3) rotate(180deg); /* IE 9 */
+    -o-transform:scale(1.8,1.3) rotate(180deg); /* Opera */
+}
+ul.neo:hover li.default:after{
+	background: #d8d8d8;
+	line-height: 1.3em;
+	float:right;
+	height:0.9em;
+	margin-top: .1em;
+}

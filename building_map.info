@@ -1,0 +1,26 @@
+name = Building Map
+description = Makes mapping a buildings internals a breeze.
+dependencies[] = multifield (1.x)
+core = 7.x
+version = "7.x-1.0"
+
+;$JQ Select list to div
+scripts[] = ./js/select_neo.js
+
+;Handles contact page
+scripts[] = ./js/contact.js
+
+;Does most of the heavy lifting
+scripts[] = ./js/map-action.js
+
+;Deals with the maps key
+scripts[] = ./js/key.js
+
+;Handles floor swithcing
+scripts[] = ./js/floor.js
+
+;main style
+stylesheets[all][] = ./main.css;
+
+;Metro style for neo-select.js
+stylesheets[all][] = ./neo-metro.css;
