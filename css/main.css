@@ -154,6 +154,9 @@ map:not(.active),
 .map.main img:not(.active){
 	display: none;
 }
+map.active{
+	display: block!important;
+}
 .map.sidebar button{
 	width: 50%;
 	float: left;
@@ -332,6 +335,6 @@ body.node-type-map #page{
 }
 
 /*temp*/
-body.node-type-map header{
+body.node-type-map body > header{
 	display: none;
 }

@@ -10,6 +10,8 @@ $state = [];
 $isOfType = [];
 	$isOfType[1] = "Team";
 	$isOfType[2] = "Toilets";
+	$isOfType[3] = "Room";
+	$isOfType[4] = "Area";
 	
 $markerType = []; //refers to html class name. you can reorder the list from here
 	$markerType[1] = "male";
@@ -24,6 +26,8 @@ $markerType = []; //refers to html class name. you can reorder the list from her
 	$markerType[10] = "cerimonial";
 	$markerType[11] = "stairwell";	
 	$markerType[12] = "lift";
+	$markerType[13] = "breakout";
+	$markerType[14] = "meeting";
 	
 	//DOM VARS
 	var area = $("area");
@@ -74,7 +78,12 @@ if(area.hasClass($markerType[11])){
 if(area.hasClass($markerType[12])){
 	key.append('<tr class="'+ $markerType[12] +'"><td><input type="checkbox" checked></td><td><label>'+ $markerType[12] +'</label></td>'+ icon +'</tr>');
 }
-	
+if(area.hasClass($markerType[13])){ //breakout
+	key.append('<tr class="'+ $markerType[13] +'"><td><input type="checkbox" checked></td><td><label>'+ $markerType[13] +" "+ $isOfType[4] +'</label></td>'+ icon +'</tr>');
+}
+if(area.hasClass($markerType[14])){ //meeting
+	key.append('<tr class="'+ $markerType[14] +'"><td><input type="checkbox" checked></td><td><label>'+ $markerType[14] +" "+ $isOfType[3] +'</label></td>'+ icon +'</tr>');
+}
 	$(".key tr input[type=checkbox]").click(function(){
 		var category = $(this).parent().parent().attr("class")
 		$("area."+ category).fadeToggle(100);

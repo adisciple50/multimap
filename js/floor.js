@@ -39,6 +39,8 @@ $(".field-map-marker, .field-map-marker-floor-two, .field-map-marker-floor-three
 		var clean = selectByClass.replace(/[\s,]+/g,'').trim();
 		var selectByClass = clean;
 		
-		$("area."+ selectByClass +", tr."+ selectByClass).hide();
+		$("area."+ selectByClass).hide();
+		$("tr."+ selectByClass +" input").removeAttr("checked");
+		
 	});
 });
