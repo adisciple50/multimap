@@ -1,2 +1,7 @@
-//install instructions for buidling_map
+//install instructions for building_map
 
+<?php
+function building_map_install(){
+    string $configFile = // 
+}
+?>

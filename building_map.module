@@ -1,0 +1,108 @@
+//<?php
+//function convertDigit($digit)
+    {
+//        switch ($digit)
+//       {
+//          case "0":
+//              return "zero";
+//            case "1":
+//                return "one";
+//            case "2":
+//                return "two";
+//            case "3":
+//                return "three";
+//            case "4":
+//                return "four";
+//            case "5":
+//                return "five";
+//            case "6":
+//                return "six";
+//            case "7":
+//                return "seven";
+//            case "8":
+//                return "eight";
+//           case "9":
+//                return "nine";
+//        }
+//    }
+
+// make this function more dynamic! Use The Drupal Database API!
+//int $floorNumber; // we dont need the floornumber, because the floor table name
+//(previousely thought to need constructing)
+// equals the page title!
+// $table_name = $node->title;
+//function getImageMapLinks($table_name){ //old!!
+//    // get current node connection to table
+//    //print entire contents of table!
+//    
+//    // how do we add it as html?
+//    $num_length = strlen((string)$floorNumber);
+//    if($num_length != 1){
+//        //include mysqli; // Drupal Uses PDO. 
+//        //$conn = new mysqli('localhost','root','','acronamy');
+//        //active node connection is assumed and accessed by using a {node} in a sql statment
+//        //hence the fault tollerance code is now redundant
+//        //if ($conn->connect_error) {
+//        //                trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
+//        //}
+//        $sqlquery1 = "SELECT field_map_marker_floor_five_field_room_name_value,field_map_marker_floor_five_field_room_type_value,field_map_marker_floor_five_field_image_map_coordinates_value FROM {node} ";
+//        $results = db_query($sqlquery1);
+//        if($results === false) {
+//                        trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+//        } else {
+//                        $rows_returned = $results->num_rows;
+//        }
+//        $results->data_seek(0);
+//        ;
+//        
+//        while($row = $results->fetch_assoc()){
+//                        echo '<area coords="' . $row['field_map_marker_floor_five_field_image_map_coordinates_value'] . '" class="' . $row['field_map_marker_floor_five_field_room_type_value'] . '" alt="' . $row['field_map_marker_floor_five_field_room_name_value'] . '"/>';
+//        };
+//    }
+//}
+
+function getImageMapMarkers($node_title){
+    $sqlquery1 = "SELECT  FROM {" .$node_title . "} ";
+    $results = db_query($sqlquery1);
+    $results->data_seek(0);
+    string $html_block = ""
+    while($row = $results->fetch_assoc()){
+        // use column numbers instead! eg  $row[1] (first row). otherwise use prepared field variables...
+        //like string $coord_value = 'field_map_marker_' . $node_title . 'etc'
+        $html_block += '<area coords="' . $row['field_map_marker_floor_five_field_image_map_coordinates_value'] . '" class="' . $row['field_map_marker_floor_five_field_room_type_value'] . '" alt="' . $row['field_map_marker_floor_five_field_room_name_value'] . '"/>';
+    }
+    return $html_block;
+}
+
+function building_map_node_view($node, $view_mode, $langCode){
+    if($node->content['field_room_name']){
+        $node_title = $node->title;
+        $HtmlBlock = getImageMapMarkers($node_title);
+        $node->content['MultiImageMap'] = array(
+            '#Markup' => $HtmlBlock,
+        );
+    }
+
+}
+function building_map_enable(){
+    
+}
+// aiming to be the complete inversion of building_map_enable()
+function building_map_disable(){
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
