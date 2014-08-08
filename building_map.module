@@ -61,6 +61,25 @@
 //    }
 //}
 
+// going for a multiifield free node structure.
+function building_map_node_info(){
+    return array(
+        building_name => array(
+            
+        )
+        floor_name => array(
+            
+        )
+        floor_plan_image => array(
+            
+        )
+        Map_marker => array(
+            // this should be made into a multifeild
+            
+        )
+    )
+}
+
 function getImageMapMarkers($node_title){
     $sqlquery1 = "SELECT  FROM {" .$node_title . "} ";
     $results = db_query($sqlquery1);

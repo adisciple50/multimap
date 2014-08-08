@@ -22,7 +22,60 @@ function building_map_install(){
     node_add_body_field($content_type);
   
     // Save the content type
-    node_type_save($content_type);
+    //node_type_save($content_type);
+    //function productcustomtype_install() {
+    
+    $content_type_values = array(
+        'building_name' => '',
+        'floor_name' => '',
+        'floor_plan_image' => '',
+        'Map_marker' => '',
+        'Description' = '',
+        'help' = '',
+        'title_label' = $content_type_values['building_name'],
+        'body_label' = '',
+        'base' = '',
+        'custom' => '1',
+        'locked' = > '0'
+        'modified' => '1'
+    )
+    // checks if the mysterious value known as 'op' is set - not sarcasm :(
+    $op = isset($content_type_values['op']) ? $content_type_values['op'] : '';
+    $type = node_type_set_defaults();
+    $type->type = trim($content_type_values['type']);
+    $type->name = trim($content_type_values['name']);
+    $type->orig_type = trim($content_type_values['orig_type']);
+    $type->old_type = isset($content_type_values['old_type']) ? $content_type_values['old_type'] : $type->type;
+    $type->description = $content_type_values['description'];
+    $type->help = $content_type_values['help'];
+    $type->title_label = $content_type_values['title_label'];
+    $type->body_label = $content_type_values['body_label'];
+    // title_label is required in core; has_title will always be true, unless a
+    // module alters the title field.
+    $type->has_title = ($type->title_label != '');
+    $type->has_body = ($type->body_label != '');
+    $type->base = !empty($content_type_values['base']) ? $content_type_values['base'] : 'node_content';
+    $type->custom = $content_type_values['custom'];
+    $type->modified = true;
+    $type->locked = $content_type_values['locked'];
+    variable_set('teaser_length_' . 600);
+    variable_set('node_preview_' . 1);
+    // Saving the content type after saving the variables allows modules to act
+    // on those variables via hook_node_type_insert().
+    
+    //add content type to admin menu
+    $status = node_type_save($type);
+    node_types_rebuild();
+    menu_rebuild();
+    $t_args = array('%name' => $type->name);
+    if ($status == SAVED_UPDATED)
+    {
+        drupal_set_message(t('The content type %name has been updated.', $t_args));
+    } elseif ($status == SAVED_NEW)
+    {
+        drupal_set_message(t('The content type %name has been added.', $t_args));
+        watchdog('node', 'Added content type %name.', $t_args, WATCHDOG_NOTICE, l(t('view'), 'admin/structure/types'));
+    }
 }
 
 function building_map_uninstall() {
