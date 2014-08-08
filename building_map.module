@@ -63,21 +63,7 @@
 
 // going for a multiifield free node structure.
 function building_map_node_info(){
-    return array(
-        building_name => array(
-            
-        )
-        floor_name => array(
-            
-        )
-        floor_plan_image => array(
-            
-        )
-        Map_marker => array(
-            // this should be made into a multifeild
-            
-        )
-    )
+    
 }
 
 function getImageMapMarkers($node_title){
@@ -94,7 +80,7 @@ function getImageMapMarkers($node_title){
 }
 
 function building_map_node_view($node, $view_mode, $langCode){
-    if($node->content['field_room_name']){
+    if($node->content['building_name']){
         $node_title = $node->title;
         $HtmlBlock = getImageMapMarkers($node_title);
         $node->content['MultiImageMap'] = array(
