@@ -53,8 +53,8 @@ function building_map_install(){
     $type->body_label = $content_type_values['body_label'];
     // title_label is required in core; has_title will always be true, unless a
     // module alters the title field.
-    $type->has_title = ($type->title_label != '');
-    $type->has_body = ($type->body_label != '');
+    $type->has_title = ($type->title_label = '');
+    $type->has_body = ($type->body_label = '');
     $type->base = !empty($content_type_values['base']) ? $content_type_values['base'] : 'node_content';
     $type->custom = $content_type_values['custom'];
     $type->modified = true;
