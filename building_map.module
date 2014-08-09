@@ -1,4 +1,4 @@
-//<?php
+<?php
 //function convertDigit($digit)
     {
 //        switch ($digit)
@@ -70,7 +70,7 @@ function getImageMapMarkers($node_title){
     $sqlquery1 = "SELECT * FROM " .$node_title ;
     $results = db_query($sqlquery1);
     $results->data_seek(0);
-    string $html_block = "";
+    $html_block = "";
     while($row = $results->fetch_assoc()){
         // use column numbers instead! eg  $row[1] (first row). otherwise use prepared field variables...
         //like string $coord_value = 'field_map_marker_' . $node_title . 'etc'
@@ -87,7 +87,7 @@ function building_map_node_view($node, $view_mode, $langCode){
             '#Slug' => $HtmlBlock,
         );
     }
-    $(content['render']);
+    //$(content['render']);
 
 }
 //function building_map_enable(){
@@ -98,17 +98,5 @@ function building_map_node_view($node, $view_mode, $langCode){
     
 //}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 ?>
