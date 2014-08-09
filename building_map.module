@@ -62,9 +62,9 @@
 //}
 
 // going for a multiifield free node structure.
-function building_map_node_info(){
+//function building_map_node_info(){
     
-}
+//}
 
 function getImageMapMarkers($node_title){
     $sqlquery1 = "SELECT * FROM " .$node_title ;
@@ -84,18 +84,19 @@ function building_map_node_view($node, $view_mode, $langCode){
         $node_title = $node->title;
         $HtmlBlock = getImageMapMarkers($node_title);
         $node->content['MultiImageMap'] = array(
-            '#Markup' => $HtmlBlock,
+            '#Slug' => $HtmlBlock,
         );
     }
+    $(content['render']);
 
 }
-function building_map_enable(){
+//function building_map_enable(){
     
-}
+//}
 // aiming to be the complete inversion of building_map_enable()
-function building_map_disable(){
+//function building_map_disable(){
     
-}
+//}
 
 
 
